@@ -105,3 +105,18 @@ agente: test en rojo → código → gates en verde → [x] → MEMORY.md → co
 
 El agente lleva el estado en `.claude/tareas/<tarea>.md` (local, no se sube) y lo duradero en
 `MEMORY.md`. En una sesión nueva alcanza con decir *"retomemos la tarea X"* o usar `/sdd-status`.
+
+## Personalizar el kit
+
+Todo es Markdown y se puede adaptar:
+
+| Querés cambiar… | Editá… |
+|---|---|
+| una regla de trabajo (commits, idioma, cómo explicar) | `CLAUDE.md` |
+| cómo se hace una fase (por ejemplo, más preguntas en la entrevista) | `.claude/skills/sdd/fases/<fase>.md` |
+| el formato de un artefacto | `docs/plantillas/<artefacto>.md` |
+| qué puede hacer el agente sin preguntar | `.claude/settings.json` (lo personal, en `.claude/settings.local.json`) |
+| las reglas innegociables del proyecto | `docs/constitution.md` (con acuerdo explícito) |
+
+Cada fase vive en **un solo archivo**: los comandos `/sdd-*` solo apuntan ahí, así que un cambio
+vale tanto para el comando como para cuando le hablás en lenguaje natural.

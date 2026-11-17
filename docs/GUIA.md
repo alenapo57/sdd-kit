@@ -89,8 +89,8 @@ que no se puede testear no se puede dar por cumplido.
 Y se separan detección y solución a propósito: si el revisor propone arreglos mientras busca, deja
 de buscar.
 
-**Señal de alarma:** una ronda 1 sin ningún hallazgo. Casi siempre hay algo (en nuestras features
-reales, entre 9 y 14 detecciones por spec).
+**Señal de alarma:** una ronda 1 sin ningún hallazgo. Casi siempre hay algo (en features reales
+hechas con este flujo, entre 10 y 14 detecciones por spec).
 
 ### Plan: cómo (`/sdd-plan`)
 
@@ -138,8 +138,10 @@ candado que serializa las reservas, el mismo test mostró **12 entradas vendidas
 Eso prueba que el test sirve y que el candado es necesario.
 
 **Cuándo no alcanza con los tests:** si la tarea toca el arranque, la configuración o los logs, el
-agente levanta **la app real** y la prueba. En un caso real, así se descubrió que el framework, al
-fallar el arranque, abortaba el proceso sin escribir ningún error; ningún test lo veía.
+agente levanta **la app real** y la prueba. En un caso real, leyendo el código del framework se
+descubrió que, si el arranque fallaba (por ejemplo, una base de datos que no abre), el proceso se
+abortaba sin explicar por qué; ningún test lo veía. Se corrigió y se comprobó con la app real: con
+una base inválida, ahora termina con un error claro y código 1.
 
 ### Validar (`/sdd-validate`)
 
@@ -187,6 +189,10 @@ El agente lleva dos registros:
   trampas, números.
 
 Las conversaciones largas se resumen solas y se pierden detalles; estos archivos no.
+
+> Claude Code tiene además su propia "memoria automática", guardada en tu máquina. No la
+> reemplaza: `MEMORY.md` es **del proyecto**, va con el código y la puede leer cualquiera que lo
+> clone, incluido el revisor.
 
 ## 7. Git y GitHub en el flujo
 
