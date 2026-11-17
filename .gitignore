@@ -1,0 +1,18 @@
+# ── Secretos: nunca al repo (la constitución lo exige) ──────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Estado local de Claude Code (personal, no se comparte) ──────────────────────
+# El archivo de tarea es el "dónde quedé" de cada sesión; lo duradero va a MEMORY.md.
+.claude/tareas/
+.claude/settings.local.json
+
+# ── Sistema operativo y editores ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# ── Lo propio del stack lo agrega /sdd-init (dependencias, builds, cobertura…) ──
