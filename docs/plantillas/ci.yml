@@ -1,0 +1,86 @@
+# CI del proyecto: corre los gates de docs/constitution.md en cada pull request hacia main y en
+# cada push a main. Si se protege main, el check requerido es el job "gates".
+#
+# PLANTILLA: /sdd-init la copia a .github/workflows/ci.yml y completa cada [COMPLETAR] con los
+# comandos del stack. Mientras un paso no esté completo, FALLA a propósito (exit 1): mejor un
+# rojo claro que un verde que no probó nada.
+name: CI
+
+on:
+  # Cada PR hacia main. Sin filtro "paths": un check requerido que no corre deja el PR trabado
+  # en "Expected — waiting".
+  pull_request:
+    branches: [main]
+  # Cada push a main (incluido el merge de un PR).
+  push:
+    branches: [main]
+
+# Permisos mínimos del token de la corrida: solo leer el código. Se usa "pull_request" (no
+# "pull_request_target"): un PR desde un fork corre sin secretos.
+permissions:
+  contents: read
+
+# Un push nuevo a la misma rama cancela la corrida anterior que siga en curso.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # El nombre "gates" es el del check que va a exigir la regla de main: si se cambia, hay que
+  # actualizar la regla o todo PR queda esperando un check que no existe.
+  gates:
+    name: gates
+    runs-on: ubuntu-latest
+    # Si un test se cuelga, la corrida falla a los 15 minutos.
+    timeout-minutes: 15
+    # Si el proyecto vive en una subcarpeta del repo, descomentar:
+    # defaults:
+    #   run:
+    #     working-directory: <subcarpeta>
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      # [COMPLETAR] Preparar el entorno con la ACCIÓN OFICIAL del stack, versión mayor fija y
+      # caché de dependencias. Usá la última versión mayor estable (verificala en su página de
+      # GitHub Marketplace). Ejemplos de la forma:
+      #
+      # - name: Instalar Node con caché
+      #   uses: actions/setup-node@v5
+      #   with:
+      #     node-version: 24
+      #     cache: npm
+      #
+      # Python: actions/setup-python · Java: actions/setup-java · Go: actions/setup-go ·
+      # .NET: actions/setup-dotnet
+
+      # Instalar EXACTAMENTE lo que dice el lockfile, sin modificarlo: si el manifiesto y el
+      # lockfile no coinciden, tiene que fallar acá.
+      - name: Instalar dependencias (lockfile congelado)
+        run: echo "[COMPLETAR] p. ej. npm ci · pnpm install --frozen-lockfile · uv sync --locked · pip install -r requirements.txt" && exit 1
+
+      # [COMPLETAR] Un paso por gate, con el MISMO comando que la tabla de docs/constitution.md,
+      # en el mismo orden. Pasos separados: en el PR se ve exactamente cuál falló.
+      - name: Lint
+        run: echo "[COMPLETAR] comando de lint" && exit 1
+
+      - name: Build / tipos
+        run: echo "[COMPLETAR] comando de build o chequeo de tipos" && exit 1
+
+      - name: Tests unitarios
+        run: echo "[COMPLETAR] comando de tests unitarios" && exit 1
+
+      - name: Tests de integración / e2e
+        run: echo "[COMPLETAR] comando de tests de integración (o borrar este paso si no hay)" && exit 1
+
+      # Opcional: cobertura con umbral y su reporte como artefacto de la corrida.
+      # - name: Cobertura
+      #   id: coverage
+      #   run: <comando de cobertura con umbral>
+      # - name: Publicar reporte de cobertura
+      #   if: ${{ !cancelled() && steps.coverage.outcome != 'skipped' }}
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: cobertura
+      #     path: <carpeta del reporte>
