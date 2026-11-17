@@ -1,6 +1,6 @@
 ---
 name: sdd
-description: Manual del flujo Spec-Driven Development de este repo (init → spec → clarify → plan → tasks → implement → validate, y change). Usala siempre que haya que escribir o revisar una spec, un plan o una lista de tareas, implementar o cerrar una tarea, validar una feature o cambiar un requisito, y cuando el usuario diga cosas como "seguí con T3", "aprobado, seguí", "escribí el validate" o "retomemos".
+description: 'Manual del flujo Spec-Driven Development de este repo (init → spec → clarify → plan → tasks → implement → validate, y change). Usala siempre que haya que escribir o revisar una spec, un plan o una lista de tareas, implementar o cerrar una tarea, validar una feature o cambiar un requisito, y cuando el usuario diga cosas como "seguí con T3", "aprobado, seguí", "escribí el validate" o "retomemos".'
 user-invocable: false
 ---
 
