@@ -49,3 +49,25 @@ Commit `NNN: validate — VEREDICTO: …` y `MEMORY.md` (la feature pasa a "vali
 6. Si algo de lo validado cambió o se confirmó después del merge, actualizá el `validate.md` con una
    nota "Actualización tras el merge" (si `main` está protegido, por un PR chico).
 7. `MEMORY.md` y archivo de tarea: feature **cerrada**.
+8. **Proponé una sesión nueva** para lo próximo. Una sesión larga arrastra todo su contexto en cada
+   turno y, si se resume sola, pierde detalles; la feature cerrada ya está documentada.
+   Preguntá: **"La NNN quedó cerrada. ¿Abrimos una sesión nueva para seguir con la próxima spec?"**
+   Si acepta, escribí el **pase** en `.claude/tareas/siguiente.md`:
+
+   ```markdown
+   # Pase a la próxima sesión (<fecha>)
+
+   ## Se cerró
+   NNN-nombre: <una línea>. PR #<n> mergeado; corrida de main <verde / link>.
+
+   ## Siguiente
+   <una de estas: "Feature NNN+1-nombre: <idea>" · "Elegir la próxima feature (ideas
+   anotadas: …)" · "Retomar NNN-nombre en Tn" · "<pendiente concreto>">
+
+   ## Para tener en cuenta
+   - <decisiones, pendientes u observaciones del validate que la próxima feature necesita>
+   ```
+
+   Y decile exactamente: **"Escribí `/clear` y después `/sdd-siguiente`."** (`/clear` empieza una
+   conversación limpia en la misma ventana; una conversación nueva también sirve.) Si no acepta,
+   seguí en la misma sesión.

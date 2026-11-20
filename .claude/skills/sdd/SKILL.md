@@ -36,6 +36,7 @@ Leé el archivo de la fase **antes** de empezarla, aunque creas recordarlo:
 | pide validar / cerrar la feature, `/sdd-validate` | [fases/validate.md](fases/validate.md) |
 | cambia o agrega un requisito, `/sdd-change` | [fases/change.md](fases/change.md) |
 | pregunta dónde quedamos, `/sdd-status` | [fases/status.md](fases/status.md) |
+| abre una sesión nueva para seguir, `/sdd-siguiente` | [fases/siguiente.md](fases/siguiente.md) |
 
 Las plantillas de cada artefacto están en `docs/plantillas/`. Un ejemplo completo y real de cómo
 quedan está en `docs/ejemplo/001-gastos/`.

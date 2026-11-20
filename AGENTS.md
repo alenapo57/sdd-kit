@@ -19,6 +19,7 @@ las mismas reglas en versión resumida, y los procedimientos de cada fase se pue
 | Implementar UNA tarea | código + tests + commit | `.claude/skills/sdd/fases/implement.md` |
 | Validar | `specs/NNN-nombre/validate.md` | `.claude/skills/sdd/fases/validate.md` |
 | Cambiar un requisito | spec actualizada | `.claude/skills/sdd/fases/change.md` |
+| Seguir en una sesión nueva | arranca desde el pase `.claude/tareas/siguiente.md` | `.claude/skills/sdd/fases/siguiente.md` |
 
 ## Reglas que no se negocian
 

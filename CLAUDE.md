@@ -44,6 +44,9 @@
 - Nada se implementa si no está en la spec aprobada. Un requisito nuevo o cambiado pasa primero
   por `/sdd-change`, después por el código.
 - `/sdd-status` dice en qué fase está cada feature y qué sigue.
+- **Una sesión por feature**: al cerrar una, proponé seguir en una sesión nueva; si el usuario
+  acepta, dejá el pase en `.claude/tareas/siguiente.md` y pedile `/clear` + `/sdd-siguiente`
+  (ver `fases/validate.md`, paso 8).
 
 ## Reglas
 

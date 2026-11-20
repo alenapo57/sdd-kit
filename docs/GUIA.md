@@ -190,6 +190,19 @@ El agente lleva dos registros:
 
 Las conversaciones largas se resumen solas y se pierden detalles; estos archivos no.
 
+**Una sesión por feature.** Al cerrar una feature, el agente te pregunta si abrimos una sesión
+nueva para la próxima. Conviene decir que sí:
+- Una sesión larga **reenvía todo su historial en cada turno**: es más lenta y gasta más.
+- Si se alarga demasiado, Claude Code la **resume sola** y se pierden detalles.
+- La feature cerrada ya quedó documentada (spec, validate, `MEMORY.md`): la sesión nueva no la
+  necesita en su contexto.
+
+Si aceptás, el agente deja un **pase** (`.claude/tareas/siguiente.md`) con qué se cerró, qué
+sigue y qué tener en cuenta, y te dice: *"Escribí `/clear` y después `/sdd-siguiente`"*. El agente
+no puede abrir la sesión por vos (eso lo controlás vos), pero con esos dos comandos la sesión
+nueva lee el pase, te resume dónde quedamos y **arranca directo**: si ya había una idea para la
+próxima feature, empieza su entrevista. El pase se usa una sola vez y después se borra.
+
 > Claude Code tiene además su propia "memoria automática", guardada en tu máquina. No la
 > reemplaza: `MEMORY.md` es **del proyecto**, va con el código y la puede leer cualquiera que lo
 > clone, incluido el revisor.

@@ -53,6 +53,7 @@ fase, por qué existe, qué revisar antes de aprobar y los errores más comunes.
 | `/sdd-validate NNN-nombre` | Revisa todo requisito por requisito y da un veredicto con evidencia | OK para push y PR |
 | `/sdd-change NNN-nombre "qué cambia"` | Cambia un requisito: primero la spec, después el código | aprobación del cambio |
 | `/sdd-status` | Dónde está cada feature y qué sigue | — |
+| `/sdd-siguiente` | En una sesión nueva, retoma desde el pase de la anterior y arranca directo | — |
 
 También podés hablar normal ("seguí con T4", "escribí el validate"): el agente sigue el mismo
 procedimiento que el comando.
@@ -105,6 +106,17 @@ agente: test en rojo → código → gates en verde → [x] → MEMORY.md → co
 
 El agente lleva el estado en `.claude/tareas/<tarea>.md` (local, no se sube) y lo duradero en
 `MEMORY.md`. En una sesión nueva alcanza con decir *"retomemos la tarea X"* o usar `/sdd-status`.
+
+**Al terminar una feature**, el agente te propone seguir en una sesión nueva. Si aceptás, deja un
+"pase" con lo que sigue y te dice qué escribir:
+
+```
+/clear
+/sdd-siguiente
+```
+
+La sesión nueva lee el pase, te resume dónde quedamos y arranca directo con la próxima spec, sin
+volver a preguntar lo que ya se decidió.
 
 ## Personalizar el kit
 
